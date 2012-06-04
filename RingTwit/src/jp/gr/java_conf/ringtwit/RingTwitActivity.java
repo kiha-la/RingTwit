@@ -1,7 +1,5 @@
 package jp.gr.java_conf.ringtwit;
 
-
-
 import twitter4j.TwitterException;
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.auth.RequestToken;
@@ -38,7 +36,7 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onRestart();
 
-		if ( _req !=null) {
+		if (_req != null) {
 			Log.d("ringtwit", "onresume");
 
 		}

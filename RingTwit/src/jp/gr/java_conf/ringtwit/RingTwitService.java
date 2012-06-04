@@ -21,30 +21,31 @@ public class RingTwitService extends Service {
 	}
 
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		//確認用トースト
+		// 確認用トースト
 		ToastNumber("start");
 
-		//電話情報の受信開始
-		TelephonyManager telManager=(TelephonyManager)
-		            getSystemService(Context.TELEPHONY_SERVICE);
-		        telManager.listen(phoneStateListener,
-		            PhoneStateListener.LISTEN_CALL_STATE|
-		            PhoneStateListener.LISTEN_SERVICE_STATE|
-		            PhoneStateListener.LISTEN_SIGNAL_STRENGTH|
-		            PhoneStateListener.LISTEN_CELL_LOCATION);
-		return START_STICKY;
+		// 電話情報の受信開始
+		TelephonyManager telManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		telManager.listen(phoneStateListener,
+				PhoneStateListener.LISTEN_CALL_STATE
+						| PhoneStateListener.LISTEN_SERVICE_STATE
+						| PhoneStateListener.LISTEN_SIGNAL_STRENGTH
+						| PhoneStateListener.LISTEN_CELL_LOCATION);
+		return startId;
+
 	}
 
-	public PhoneStateListener phoneStateListener = new PhoneStateListener(){
-	    @Override
-	    public void onCallStateChanged(int state, String number) {
-	    	  if (state==TelephonyManager.CALL_STATE_RINGING) ToastNumber(number);
-	    }
+	public PhoneStateListener phoneStateListener = new PhoneStateListener() {
+		@Override
+		public void onCallStateChanged(int state, String number) {
+			if (state == TelephonyManager.CALL_STATE_RINGING)
+				ToastNumber(number);
+		}
 	};
 
-	//トースト
-	public void ToastNumber(String number2){
-		Toast.makeText(this,number2, Toast.LENGTH_LONG).show();
+	// トースト
+	public void ToastNumber(String number2) {
+		Toast.makeText(this, number2, Toast.LENGTH_LONG).show();
 	}
 
 }

@@ -3,5 +3,6 @@
 
     <string name="hello">Hello Kazumi, RingTwitActivity!</string>
     <string name="app_name">RingTwit</string>
+    <string name="Authorize">Authorize</string>
 
 </resources>
