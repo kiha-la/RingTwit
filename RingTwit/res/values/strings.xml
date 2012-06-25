@@ -4,5 +4,7 @@
     <string name="hello">Hello Kazumi, RingTwitActivity!</string>
     <string name="app_name">RingTwit</string>
     <string name="Authorize">Authorize</string>
+    <string name="outh">認証</string>
+    <string name="StartService">サービス起動</string>
 
 </resources>

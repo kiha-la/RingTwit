@@ -4,6 +4,7 @@ import twitter4j.TwitterException;
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.conf.ConfigurationContext;
 import android.app.Activity;
 import android.content.Intent;
@@ -56,7 +57,8 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 
 		// twitter認証ボタンの場合
 		case R.id.button2:
-			executeOauth();
+			//executeOauth(); テスト
+			executeOauth2();
 			break;
 
 		}
@@ -65,6 +67,7 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 
 	// 認証ページをブラウザで開く
 	private void executeOauth() {
+
 		Log.d("ringtwit", "executeOauth");
 
 		// Twitetr4jの設定を読み込む
@@ -77,12 +80,14 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 				"HFiekYjyOzMdjm1B7XjuWo2tiFf9ZBo7CZujPrrw4");
 
 		// アプリの認証オブジェクト作成
-		RequestToken _req = null;
+		_oauth = new OAuthAuthorization(conf);
+		_oauth.setOAuthAccessToken(null);
 		try {
-			_req = oauth.getOAuthRequestToken();
+			_req = _oauth.getOAuthRequestToken("Callback://CallBackActivity");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+		
 		String _uri;
 		_uri = _req.getAuthorizationURL();
 		// _uriのログ
@@ -92,4 +97,9 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 
 	}
 
+	private void executeOauth2() {
+
+	
+
+	}
 }
