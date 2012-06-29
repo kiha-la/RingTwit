@@ -37,10 +37,10 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onRestart();
 
-		if (_req != null) {
+		/*if (_req != null) {
 			Log.d("ringtwit", "onresume");
 
-		}
+		}*/
 
 	}
 
@@ -57,8 +57,12 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 
 		// twitter認証ボタンの場合
 		case R.id.button2:
-			//executeOauth(); テスト
-			executeOauth2();
+			Intent intent = new Intent(this, OAuthActivity.class);
+			intent.putExtra(OAuthActivity.CALLBACK, "Callback://CallBackActivity");
+			intent.putExtra(OAuthActivity.CONSUMER_KEY, "ztK1xRFV31ma6O0a3jiQ");
+			intent.putExtra(OAuthActivity.CONSUMER_SECRET, "HFiekYjyOzMdjm1B7XjuWo2tiFf9ZBo7CZujPrrw4");
+			startActivityForResult(intent,0);
+
 			break;
 
 		}
@@ -66,7 +70,7 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 	}
 
 	// 認証ページをブラウザで開く
-	private void executeOauth() {
+	/*private void executeOauth() {
 
 		Log.d("ringtwit", "executeOauth");
 
@@ -87,7 +91,7 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		
+
 		String _uri;
 		_uri = _req.getAuthorizationURL();
 		// _uriのログ
@@ -96,10 +100,7 @@ public class RingTwitActivity extends Activity implements OnClickListener {
 				0);
 
 	}
+	*/
 
-	private void executeOauth2() {
 
-	
-
-	}
 }
