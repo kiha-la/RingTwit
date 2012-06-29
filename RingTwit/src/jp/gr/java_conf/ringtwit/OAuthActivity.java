@@ -172,6 +172,7 @@ public class OAuthActivity extends Activity {
                 String screenName = result.getScreenName();
                 String token = result.getToken();
                 String tokenSecret = result.getTokenSecret();
+
                 Intent intent = new Intent();
                 intent.putExtra(USER_ID, userId);
                 intent.putExtra(SCREEN_NAME, screenName);
