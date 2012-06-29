@@ -31,10 +31,11 @@ public class OAuthActivity extends Activity {
     public static final String TOKEN_SECRET = "token_secret";
 
     private static final String OAUTH_VERIFIER = "oauth_verifier";
-    
+
+    public static RequestToken requestToken = null;
     private WebView mWebView;
     private String mCallback;
-    private Twitter mTwitter;
+    public static Twitter mTwitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +88,7 @@ public class OAuthActivity extends Activity {
             String authorizationUrl = null;
             try {
                 // 非同期処理が必要なメソッドの呼び出し
-                RequestToken requestToken = mTwitter.getOAuthRequestToken();
+                requestToken = mTwitter.getOAuthRequestToken();
                 if (requestToken != null) {
                     authorizationUrl = requestToken.getAuthorizationURL();
                 }
